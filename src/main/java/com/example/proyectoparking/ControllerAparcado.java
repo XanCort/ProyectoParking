@@ -6,8 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.stage.Stage;
 
 public class ControllerAparcado {
+
+    Thread contador;
+
 
     @FXML
     private Button bttnSalir;
@@ -23,7 +27,7 @@ public class ControllerAparcado {
         spinnerMinutos.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 60, 0));
         spinnerSegundos.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 60, 0));
 
-        Thread contador = new Thread(new Runnable() {
+        contador = new Thread(new Runnable() {
             @Override
             public void run() {
                 while (true){
@@ -38,21 +42,18 @@ public class ControllerAparcado {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
+                }
             }
-        }});
+        });
         contador.setDaemon(true);
         contador.start();
 
 
     }
-
-
     @FXML
     void onSalirButtonClick(ActionEvent event) {
-
+        contador.interrupt();
+        ((Stage) bttnSalir.getScene().getWindow()).close();
     }
-
-
-
 
 }

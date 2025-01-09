@@ -3,10 +3,14 @@ package com.example.proyectoparking;
 import com.example.proyectoparking.modelo.Coche;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ControllerPlazas {
@@ -30,7 +34,7 @@ public class ControllerPlazas {
     };
 
     @FXML
-    void onButtonEntrar(ActionEvent event) {
+    void onButtonEntrar(ActionEvent event) throws IOException {
         //Creo y lanzo el nuevo controlador
         libres =libres-1;
         labelContador.setText(libres+"");
@@ -38,7 +42,16 @@ public class ControllerPlazas {
             bttnEntrar.setDisable(true);
             labellLibre.setText("COMPLETO");
         }
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("registro_view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 600);
+        stage.setTitle("Registro");
+        stage.setScene(scene);
+        stage.show();
     }
-
+    void actualizarLabel(){
+        libres++;
+        labelContador.setText(libres+"");
+    }
 
 }
