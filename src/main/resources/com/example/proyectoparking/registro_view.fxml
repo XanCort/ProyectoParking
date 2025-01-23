@@ -5,10 +5,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoparking.ControllerRegistro">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoparking.controlador.ControllerPantallaDosRegistroDatos">
    <children>
-      <Button fx:id="btnEntrar" layoutX="274.0" layoutY="325.0" mnemonicParsing="false" onAction="#bttnEntrarOnClick" text="Entrar" />
-      <TextField fx:id="txtMatricula" layoutX="226.0" layoutY="200.0" />
-      <Label layoutX="195.0" layoutY="135.0" prefHeight="17.0" prefWidth="210.0" style="-fx-alignment: center;" text="Introduzca su matrícula" />
+      <Label layoutX="150.0" layoutY="50.0" prefHeight="40.0" prefWidth="300.0" styleClass="label" text="Registro de Vehículo" />
+      <Label layoutX="140.0" layoutY="135.0" prefHeight="49.0" prefWidth="320.0" styleClass="label" text="Introduzca su matrícula" />
+      <TextField fx:id="txtMatricula" layoutX="170.0" layoutY="200.0" prefWidth="260.0" styleClass="text-field" />
+      <Button fx:id="btnEntrar" layoutX="259.0" layoutY="281.0" mnemonicParsing="false" onAction="#bttnEntrarOnClick" styleClass="timer-button" text="Entrar" />
    </children>
 </AnchorPane>

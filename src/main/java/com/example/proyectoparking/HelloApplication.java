@@ -1,5 +1,7 @@
 package com.example.proyectoparking;
 
+import com.example.proyectoparking.utils.Constantes;
+import com.example.proyectoparking.utils.PantallaUtils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,11 +12,7 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("plazas_view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 550, 450);
-        stage.setTitle("Parking!");
-        stage.setScene(scene);
-        stage.show();
+        PantallaUtils.showEstaPantalla(stage, Constantes.PAGINA_INICIO.getDescripcion(),Constantes.TITULO_INICIO.getDescripcion(),600,450);
     }
 
     public static void main(String[] args) {

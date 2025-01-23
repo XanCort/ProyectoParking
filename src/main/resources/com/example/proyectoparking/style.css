@@ -1,0 +1,100 @@
+/* Estilo general para la aplicación */
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: linear-gradient(to bottom, #EAF3FA, #D0E4F7); /* Fondo degradado azul claro */
+}
+
+/* Estilo para las etiquetas de texto */
+.label {
+    -fx-font-size: 24px;
+    -fx-text-fill: #004182; /* Azul oscuro profesional */
+    -fx-font-weight: bold;
+    -fx-padding: 10;
+    -fx-alignment: center;
+}
+
+/* Estilo para las cajas de los números del temporizador */
+.timer-box {
+    -fx-background-color: #0073B1; /* Azul LinkedIn */
+    -fx-text-fill: white; /* Texto blanco */
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-padding: 10;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 4);
+    -fx-min-width: 90px; /* Tamaño fijo para las cajas */
+    -fx-min-height: 90px;
+}
+
+/* Espaciado entre las cajas del temporizador */
+.timer-container {
+    -fx-spacing: 15; /* Espaciado entre los cuadros */
+    -fx-alignment: center;
+}
+
+/* Estilo para los puntos ":" entre las cajas */
+.timer-separator {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0073B1; /* Azul LinkedIn */
+    -fx-padding: 0 10;
+}
+
+/* Botón "Salir" en el temporizador */
+.timer-button {
+    -fx-background-color: linear-gradient(to bottom, #004182, #003362); /* Fondo azul oscuro */
+    -fx-text-fill: white; /* Texto blanco */
+    -fx-font-size: 20px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
+}
+
+.timer-button:hover {
+    -fx-background-color: #003362; /* Azul más oscuro al pasar el ratón */
+}
+
+.timer-button:pressed {
+    -fx-background-color: #002347; /* Azul intenso al presionar */
+}
+
+/* Estilo para las tablas */
+.table-view {
+    -fx-background-color: #FFFFFF; /* Fondo blanco */
+    -fx-border-color: #0073B1; /* Azul LinkedIn */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 4);
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #0073B1; /* Azul LinkedIn */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-border-color: #EAF3FA;
+    -fx-alternate-row-fill: #F4F9FD; /* Azul claro para filas alternas */
+}
+
+/* Estilo para los campos de texto */
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #0073B1;
+    -fx-border-radius: 5px;
+    -fx-padding: 8;
+    -fx-font-size: 18px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 4, 0, 0, 2);
+}
+
+.text-field:focused {
+    -fx-border-color: #004182; /* Azul oscuro al enfocar */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 65, 130, 0.4), 5, 0, 0, 2);
+}
+.label.full {
+    -fx-text-fill: red;
+}

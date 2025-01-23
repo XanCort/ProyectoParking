@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoparking.ControllerAparcado">
-   <children>
-      <Button fx:id="bttnSalir" layoutX="274.0" layoutY="255.0" mnemonicParsing="false" onAction="#onSalirButtonClick" text="Salir" />
-      <Spinner fx:id="spinnerMinutos" disable="true" layoutX="232.0" layoutY="141.0" prefHeight="25.0" prefWidth="68.0"></Spinner>
-      <Spinner fx:id="spinnerSegundos" accessibleRoleDescription="s" disable="true" layoutX="300.0" layoutY="141.0" prefHeight="25.0" prefWidth="58.0" />
-   </children>
+<AnchorPane prefHeight="509.0" prefWidth="857.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoparking.controlador.ControllerPantallaTresTimer">
+   <VBox alignment="CENTER" prefHeight="400.0" prefWidth="668.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <Label styleClass="header" text="Temporizador" />
+         <HBox alignment="CENTER" spacing="10.0">
+            <children>
+               <Label styleClass="label" text="Horas" />
+               <Label fx:id="labelHoras" styleClass="timer-box" text="00" />
+               <Label styleClass="colon" text=":" />
+               <Label styleClass="label" text="Minutos" />
+               <Label fx:id="labelMinutos" styleClass="timer-box" text="00" />
+               <Label styleClass="colon" text=":" />
+               <Label styleClass="label" text="Segundos" />
+               <Label fx:id="labelSegundos" styleClass="timer-box" text="00" />
+            </children>
+         </HBox>
+         <Button fx:id="bttnSalir" layoutX="274.0" layoutY="255.0" mnemonicParsing="false" onAction="#onSalirButtonClick" styleClass="timer-button" text="Salir" />
+      </children>
+   </VBox>
 </AnchorPane>

@@ -5,19 +5,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoparking.ControllerPlazas">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoparking.controlador.ControllerPantallaInicioParking">
    <children>
-      <Label fx:id="labellLibre" alignment="CENTER" layoutX="114.0" layoutY="87.0" prefHeight="69.0" prefWidth="331.0" text="LIBRE">
+      <Label fx:id="labellLibre" alignment="CENTER" layoutX="140.0" layoutY="50.0" prefHeight="60.0" prefWidth="320.0" styleClass="label" text="LIBRE">
          <font>
-            <Font size="47.0" />
+            <Font size="40.0" />
          </font>
       </Label>
-      <Label fx:id="labelContador" alignment="CENTER" layoutX="198.0" layoutY="200.0" prefHeight="45.0" prefWidth="165.0" text="0000">
+      <Label fx:id="labelContador" alignment="CENTER" layoutX="218.0" layoutY="160.0" prefHeight="60.0" prefWidth="165.0" styleClass="timer-box" text="0000">
          <font>
             <Font size="32.0" />
          </font>
       </Label>
-      <Button fx:id="bttnEntrar" layoutX="339.0" layoutY="310.0" mnemonicParsing="false" onAction="#onButtonEntrar" text="Entrar" />
-      <Button fx:id="bttnReservar" layoutX="181.0" layoutY="310.0" mnemonicParsing="false" text="Reservar" />
+      <Button fx:id="bttnEntrar" layoutX="177.0" layoutY="280.0" mnemonicParsing="false" onAction="#onButtonEntrar" styleClass="timer-button" text="Entrar" />
+      <Button fx:id="bttnAdmin" layoutX="310.0" layoutY="280.0" mnemonicParsing="false" onAction="#openAdminMode" styleClass="timer-button" text="Admin Mode" />
    </children>
 </AnchorPane>

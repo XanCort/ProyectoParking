@@ -17,7 +17,7 @@ public class PantallaUtils {
      * @param stage le pasamos un stage
      * @param vista le pasamos la vista que se va a cargar
      */
-    public FXMLLoader showEstaPantalla(Stage stage, String vista, String titulo, int ancho, int alto) throws IOException {
+    static public FXMLLoader showEstaPantalla(Stage stage, String vista, String titulo, int ancho, int alto) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(vista));
         Scene scene = new Scene(fxmlLoader.load(), ancho, alto);
         stage.setTitle(titulo);
@@ -33,7 +33,7 @@ public class PantallaUtils {
      *
      * @param botonDelAction el pasamos el botón que accionó
      */
-    public Stage cerrarEstaPantalla(Button botonDelAction){
+    static public Stage cerrarEstaPantalla(Button botonDelAction){
         //OBTENEMOS EL STAGE DE LA PANTALLA ACTUAL, A PARTIR DEL BOTÓN QUE SE ACCIONA
         Stage stageAhora = (Stage) botonDelAction.getScene().getWindow();
 
