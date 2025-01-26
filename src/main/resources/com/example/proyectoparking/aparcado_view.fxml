@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="509.0" prefWidth="857.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoparking.controlador.ControllerPantallaTresTimer">
+<AnchorPane prefHeight="509.0" prefWidth="857.0" stylesheets="@../../../Styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoparking.controlador.ControllerPantallaTresTimer">
    <VBox alignment="CENTER" prefHeight="400.0" prefWidth="668.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
          <Label styleClass="header" text="Temporizador" />

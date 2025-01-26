@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoparking.controlador.ControllerPantallaDosRegistroDatos">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../Styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectoparking.controlador.ControllerPantallaDosRegistroDatos">
    <children>
       <Label layoutX="150.0" layoutY="50.0" prefHeight="40.0" prefWidth="300.0" styleClass="label" text="Registro de Vehículo" />
       <Label layoutX="140.0" layoutY="135.0" prefHeight="49.0" prefWidth="320.0" styleClass="label" text="Introduzca su matrícula" />
