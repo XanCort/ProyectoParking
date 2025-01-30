@@ -1,5 +1,6 @@
 package com.example.proyectoparking;
 
+import com.example.proyectoparking.controlador.ConexionBaseDatos;
 import com.example.proyectoparking.utils.Constantes;
 import com.example.proyectoparking.utils.PantallaUtils;
 import javafx.application.Application;

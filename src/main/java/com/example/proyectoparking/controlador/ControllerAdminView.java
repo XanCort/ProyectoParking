@@ -1,6 +1,7 @@
 package com.example.proyectoparking.controlador;
 
 import com.example.proyectoparking.modelo.Coche;
+import com.example.proyectoparking.modelo.CocheDAO;
 import com.example.proyectoparking.utils.Constantes;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -42,16 +43,22 @@ public class ControllerAdminView {
      */
     @FXML
     void onBttnExpulsarClick(ActionEvent event) {
+        boolean cocheEncontrado = false;
         cocheSeleccionado = TablaCoches.getSelectionModel().getSelectedItem();
         for (ControllerPantallaTresTimer c : controllerInicio.getListaTimers()) {
             System.out.println(Constantes.MENSAJE_EXPULSION.getDescripcion());
-
             if (c.getCocheAsociado().getMatricula().equals(cocheSeleccionado.getMatricula())) {
                 System.out.println(Constantes.ALERTA_EXPULSION.getDescripcion());
                 controllerInicio.removeTimer(c);
+                cocheEncontrado = true;
                 break;
             }
         }
+        if(!cocheEncontrado){
+            cocheSeleccionado.retirarCoche();
+            actualizarTabla();
+        }
+
     }
 
     /**
@@ -63,18 +70,18 @@ public class ControllerAdminView {
         Platform.runLater(() -> {
             colEntrada.setCellValueFactory(new PropertyValueFactory<>("entrada"));
             colMatricula.setCellValueFactory(new PropertyValueFactory<>("matricula"));
-            actualizarTabla(controllerInicio.getCoches());
+            actualizarTabla();//controllerInicio.getCoches());
         });
     }
 
     /**
      * Método para actualizar la tabla.
      * Primero la limpia y luego la rellena con los nuevos datos
-     * @param coches Array mandado por el controlador principal que incluye todos los vehículos que hay en el momento
      */
-    public void actualizarTabla(ArrayList<Coche> coches) {
+    public void actualizarTabla() {
         TablaCoches.getItems().clear();
-        for (Coche c : coches) {
+
+        for (Coche c : CocheDAO.recuperarCochesActivos()) {
             TablaCoches.getItems().add(c);
         }
     }

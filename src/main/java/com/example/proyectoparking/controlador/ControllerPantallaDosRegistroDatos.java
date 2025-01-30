@@ -50,6 +50,7 @@ public class ControllerPantallaDosRegistroDatos {
                     Constantes.MENSAJE_MATRICULA_INVALIDA.getDescripcion()
             );
         } else {
+            cocheRegistrado.insertarCoche();
             controladorInicio.addCoche(cocheRegistrado);
             Stage stage = PantallaUtils.cerrarEstaPantalla(btnEntrar);
             FXMLLoader fxmlLoader = PantallaUtils.showEstaPantalla(

@@ -173,7 +173,7 @@ public class ControllerPantallaInicioParking {
      * Método para actualizar la tabla del administrador
      */
     public void actualizarAdmin() {
-        pantallaAdmin.actualizarTabla(coches);
+        pantallaAdmin.actualizarTabla();
     }
 
     public ArrayList<ControllerPantallaTresTimer> getListaTimers() {

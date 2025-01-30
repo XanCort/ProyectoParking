@@ -1,6 +1,8 @@
 module com.example.proyectoparking {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
+    requires java.xml.crypto;
 
 
     opens com.example.proyectoparking to javafx.fxml, javafx.controls, javafx.base;

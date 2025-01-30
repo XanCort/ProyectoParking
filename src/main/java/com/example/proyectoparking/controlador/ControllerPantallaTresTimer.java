@@ -114,6 +114,7 @@ public class ControllerPantallaTresTimer {
                 (Double.parseDouble(labelMinutos.getText()) * 60) +
                 (Double.parseDouble(labelSegundos.getText())) / 3600;
         AlertaUtils.showAlertaRetirado(tiempoTotal);
+        cocheAsociado.retirarCoche();
         notificarSalida();
     }
 
@@ -132,6 +133,7 @@ public class ControllerPantallaTresTimer {
      */
     public void expulsar() {
         AlertaUtils.showAlertaExpulsion();
+        cocheAsociado.retirarCoche();
         notificarSalida();
         stage.close();
     }
