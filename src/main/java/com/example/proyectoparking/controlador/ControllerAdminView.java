@@ -11,7 +11,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
 
 
 /**
@@ -99,14 +101,22 @@ public class ControllerAdminView {
     public void initialize() {
         rpGen = new ReportGenerating();
 
-        Menu accelerator = new Menu();
-        MenuItem expulsarCoche = new MenuItem("Expulsar");
-        expulsarCoche.setAccelerator(KeyCombination.keyCombination("Ctrl+S"));
+
 
         Platform.runLater(() -> {
             colEntrada.setCellValueFactory(new PropertyValueFactory<>("entrada"));
             colMatricula.setCellValueFactory(new PropertyValueFactory<>("matricula"));
             actualizarTabla();
+
+            TablaCoches.getScene().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+                if (event.isControlDown() && event.getCode() == KeyCode.E) {
+                    System.out.println("Expulsar coche ejecutado!");
+                    expulsarCoche();// Llama a la función que necesites aquí
+                    event.consume(); // Evita que otros controles capturen el evento
+                }
+            });
+
+
         });
     }
 
@@ -129,4 +139,35 @@ public class ControllerAdminView {
     public void setControllerInicio(ControllerPantallaInicioParking controllerInicio) {
         this.controllerInicio = controllerInicio;
     }
+
+    /**
+     * Método para expulsar coche
+     */
+    public void expulsarCoche() {
+        boolean cocheEncontrado = false;
+
+        cocheSeleccionado = TablaCoches.getSelectionModel().getSelectedItem();
+        if(cocheSeleccionado!=null){
+            if(AlertaUtils.showConfirmacionExpulsion()){
+                for (ControllerPantallaTresTimer c : controllerInicio.getListaTimers()) {
+                    System.out.println(Constantes.MENSAJE_EXPULSION.getDescripcion());
+                    if (c.getCocheAsociado().getMatricula().equals(cocheSeleccionado.getMatricula())) {
+                        System.out.println(Constantes.ALERTA_EXPULSION.getDescripcion());
+                        controllerInicio.removeTimer(c);
+                        cocheEncontrado = true;
+                        break;
+                    }
+                }
+                if(!cocheEncontrado){
+                    cocheSeleccionado.retirarCoche();
+                    actualizarTabla();
+                }
+            }
+        }
+
+    }
+
+
 }
+
+
