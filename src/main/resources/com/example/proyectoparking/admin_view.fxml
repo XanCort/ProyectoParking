@@ -13,6 +13,8 @@
             <TableColumn fx:id="colEntrada" prefWidth="135.0" text="Entrada" />
         </columns>
       </TableView>
-      <Button fx:id="bttnExpulsar" layoutX="438.0" layoutY="188.0" mnemonicParsing="false" onAction="#onBttnExpulsarClick" text="Expulsar" />
+      <Button fx:id="bttnExpulsar" layoutX="438.0" layoutY="267.0" mnemonicParsing="false" onAction="#onBttnExpulsarClick" text="Expulsar" />
+      <Button fx:id="bttnInforme" layoutX="417.0" layoutY="128.0" mnemonicParsing="false" onAction="#bttnInformeOnClick" text="Generar infrome" />
+      <Button fx:id="bttnInformeIndv" layoutX="390.0" layoutY="189.0" mnemonicParsing="false" onAction="#bttnInformeIndvOnClick" text="Generar infrome individual" />
    </children>
 </AnchorPane>

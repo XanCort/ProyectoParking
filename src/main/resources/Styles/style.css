@@ -61,6 +61,12 @@
     -fx-background-color: #002347; /* Azul intenso al presionar */
 }
 
+.timer-button:focused {
+    -fx-border-color: #FFA500; /* Naranja suave */
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+}
+
 /* Estilo para las tablas */
 .table-view {
     -fx-background-color: #FFFFFF; /* Fondo blanco */

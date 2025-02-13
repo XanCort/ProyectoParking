@@ -2,6 +2,7 @@ package com.example.proyectoparking.utils;
 
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 public class AlertaUtils {
     // Método para mostrar alerta informativa
@@ -30,5 +31,13 @@ public class AlertaUtils {
         alert.setHeaderText(null);
         alert.setContentText(Constantes.MENSAJE_EXPULSION.getDescripcion());
         alert.show();
+    }
+
+    public static boolean showConfirmacionExpulsion(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Seguro que quiere expulsar el vehiuculo?");
+        alert.setHeaderText(null);
+        ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+        return result == ButtonType.OK;
     }
 }

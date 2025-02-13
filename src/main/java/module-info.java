@@ -3,6 +3,9 @@ module com.example.proyectoparking {
     requires javafx.fxml;
     requires java.sql;
     requires java.xml.crypto;
+    requires java.desktop;
+    requires kernel;
+    requires layout;
 
 
     opens com.example.proyectoparking to javafx.fxml, javafx.controls, javafx.base;

@@ -2,16 +2,17 @@ package com.example.proyectoparking.controlador;
 
 import com.example.proyectoparking.modelo.Coche;
 import com.example.proyectoparking.modelo.CocheDAO;
+import com.example.proyectoparking.utils.AlertaUtils;
 import com.example.proyectoparking.utils.Constantes;
+import com.example.proyectoparking.utils.reportes.ReportGenerating;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.util.ArrayList;
+import javafx.scene.input.KeyCombination;
+
 
 /**
  * Controlador de la ventana de administrador
@@ -22,7 +23,7 @@ public class ControllerAdminView {
 
     private ControllerPantallaInicioParking controllerInicio;
     private Coche cocheSeleccionado;
-
+    private ReportGenerating rpGen;
 
     @FXML
     private TableView<Coche> TablaCoches;
@@ -36,6 +37,25 @@ public class ControllerAdminView {
     @FXML
     private TableColumn<Coche, String> colMatricula;
 
+    @FXML
+    private Button bttnInforme;
+
+    @FXML
+    private Button bttnInformeIndv;
+
+    @FXML
+    void bttnInformeIndvOnClick(ActionEvent event) {
+        cocheSeleccionado = TablaCoches.getSelectionModel().getSelectedItem();
+        rpGen.generateReportIndividual(ReportGenerating.connect(),cocheSeleccionado.getMatricula());
+    }
+
+    @FXML
+    void bttnInformeOnClick(ActionEvent event) {
+        rpGen.generateReport(ReportGenerating.connect());
+    }
+
+
+
     /**
      * Método asignado al botón expulsar
      * Recupera el vehículo seleccionado en la tabla, lo busca en la lista de vehículos del controlador principal y le indica que debe eliminarse
@@ -44,22 +64,25 @@ public class ControllerAdminView {
     @FXML
     void onBttnExpulsarClick(ActionEvent event) {
         boolean cocheEncontrado = false;
-        cocheSeleccionado = TablaCoches.getSelectionModel().getSelectedItem();
-        for (ControllerPantallaTresTimer c : controllerInicio.getListaTimers()) {
-            System.out.println(Constantes.MENSAJE_EXPULSION.getDescripcion());
-            if (c.getCocheAsociado().getMatricula().equals(cocheSeleccionado.getMatricula())) {
-                System.out.println(Constantes.ALERTA_EXPULSION.getDescripcion());
-                controllerInicio.removeTimer(c);
-                cocheEncontrado = true;
-                break;
+        if(AlertaUtils.showConfirmacionExpulsion()){
+            cocheSeleccionado = TablaCoches.getSelectionModel().getSelectedItem();
+            for (ControllerPantallaTresTimer c : controllerInicio.getListaTimers()) {
+                System.out.println(Constantes.MENSAJE_EXPULSION.getDescripcion());
+                if (c.getCocheAsociado().getMatricula().equals(cocheSeleccionado.getMatricula())) {
+                    System.out.println(Constantes.ALERTA_EXPULSION.getDescripcion());
+                    controllerInicio.removeTimer(c);
+                    cocheEncontrado = true;
+                    break;
+                }
+            }
+            if(!cocheEncontrado){
+                cocheSeleccionado.retirarCoche();
+                actualizarTabla();
             }
         }
-        if(!cocheEncontrado){
-            cocheSeleccionado.retirarCoche();
-            actualizarTabla();
-        }
-
     }
+
+
 
     /**
      * Método que se ejecuta al inicializar la ventana.
@@ -67,10 +90,16 @@ public class ControllerAdminView {
      */
     @FXML
     public void initialize() {
+        rpGen = new ReportGenerating();
+
+        Menu accelerator = new Menu();
+        MenuItem expulsarCoche = new MenuItem("Expulsar");
+        expulsarCoche.setAccelerator(KeyCombination.keyCombination("Ctrl+S"));
+
         Platform.runLater(() -> {
             colEntrada.setCellValueFactory(new PropertyValueFactory<>("entrada"));
             colMatricula.setCellValueFactory(new PropertyValueFactory<>("matricula"));
-            actualizarTabla();//controllerInicio.getCoches());
+            actualizarTabla();
         });
     }
 
