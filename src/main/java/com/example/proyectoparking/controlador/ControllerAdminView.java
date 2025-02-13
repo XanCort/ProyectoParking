@@ -46,7 +46,10 @@ public class ControllerAdminView {
     @FXML
     void bttnInformeIndvOnClick(ActionEvent event) {
         cocheSeleccionado = TablaCoches.getSelectionModel().getSelectedItem();
-        rpGen.generateReportIndividual(ReportGenerating.connect(),cocheSeleccionado.getMatricula());
+        if (cocheSeleccionado!=null){
+            rpGen.generateReportIndividual(ReportGenerating.connect(),cocheSeleccionado.getMatricula());
+        }
+
     }
 
     @FXML
@@ -64,22 +67,26 @@ public class ControllerAdminView {
     @FXML
     void onBttnExpulsarClick(ActionEvent event) {
         boolean cocheEncontrado = false;
-        if(AlertaUtils.showConfirmacionExpulsion()){
-            cocheSeleccionado = TablaCoches.getSelectionModel().getSelectedItem();
-            for (ControllerPantallaTresTimer c : controllerInicio.getListaTimers()) {
-                System.out.println(Constantes.MENSAJE_EXPULSION.getDescripcion());
-                if (c.getCocheAsociado().getMatricula().equals(cocheSeleccionado.getMatricula())) {
-                    System.out.println(Constantes.ALERTA_EXPULSION.getDescripcion());
-                    controllerInicio.removeTimer(c);
-                    cocheEncontrado = true;
-                    break;
+
+        cocheSeleccionado = TablaCoches.getSelectionModel().getSelectedItem();
+        if(cocheSeleccionado!=null){
+            if(AlertaUtils.showConfirmacionExpulsion()){
+                for (ControllerPantallaTresTimer c : controllerInicio.getListaTimers()) {
+                    System.out.println(Constantes.MENSAJE_EXPULSION.getDescripcion());
+                    if (c.getCocheAsociado().getMatricula().equals(cocheSeleccionado.getMatricula())) {
+                        System.out.println(Constantes.ALERTA_EXPULSION.getDescripcion());
+                        controllerInicio.removeTimer(c);
+                        cocheEncontrado = true;
+                        break;
+                    }
+                }
+                if(!cocheEncontrado){
+                    cocheSeleccionado.retirarCoche();
+                    actualizarTabla();
                 }
             }
-            if(!cocheEncontrado){
-                cocheSeleccionado.retirarCoche();
-                actualizarTabla();
-            }
         }
+
     }
 
 

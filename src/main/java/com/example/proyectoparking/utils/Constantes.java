@@ -13,12 +13,16 @@ public enum Constantes {
     TITULO_APARCADO("Temporizador"),
 
     // Mensajes de alerta
+    ALERTA_CONFIRMACION_REGISTRO_TITULO("Confirmacion de registro"),
+    ALERTA_CONFIRMACION_EXPULSION_TITULO("Confirmacion de expulsión"),
     ALERTA_MATRICULA_INCORRECTA("Matrícula incorrecta"),
     MENSAJE_MATRICULA_INVALIDA("La matrícula introducida no es válida por favor introduzca una con el formato estándar español NNNNCCC"),
     ALERTA_COCHE_RETIRADO("Coche retirado"),
     MENSAJE_COCHE_RETIRADO("El precio para retirar su coche ha sido de {0}€.\nGracias por confiar en nosotros, esperamos que vuelva pronto"),
     ALERTA_EXPULSION("EXPULSADO"),
     MENSAJE_EXPULSION("Su coche ha sido retirado del parking! \nPara obtener más información póngase en contacto con el teléfono que le proporcionaremos a continuación"),
+    MENSAJE_CONFIRMACION_EXPULSION("Seguro que quiere expulsar el vehiuculo?"),
+    MENSAJE_CONFIRMACION_REGISTRO("Su matrícula es {0}?"),
 
     // Otros textos
     ESTADO_COMPLETO("COMPLETO"),

@@ -42,31 +42,34 @@ public class ControllerPantallaDosRegistroDatos {
      */
     @FXML
     void bttnEntrarOnClick(ActionEvent event) throws IOException {
-        Coche cocheRegistrado = new Coche(txtMatricula.getText());
-        if (!cocheRegistrado.matriculaValida()) {
-            //Si no es válida se lanza una alerta notificando del modelo que debe seguir
-            AlertaUtils.showAlertaInformacion(
-                    Constantes.ALERTA_MATRICULA_INCORRECTA.getDescripcion(),
-                    Constantes.MENSAJE_MATRICULA_INVALIDA.getDescripcion()
-            );
-        } else {
-            cocheRegistrado.insertarCoche();
-            controladorInicio.addCoche(cocheRegistrado);
-            Stage stage = PantallaUtils.cerrarEstaPantalla(btnEntrar);
-            FXMLLoader fxmlLoader = PantallaUtils.showEstaPantalla(
-                    stage,
-                    Constantes.PAGINA_APARCADO.getDescripcion(),
-                    Constantes.TITULO_APARCADO.getDescripcion(),
-                    1000,
-                    600
-            );
-            //Tras crear la nueva pantalla le asociamos el controlador principal para que pueda notificarle cuando el vehículo abandona el parking
-            ControllerPantallaTresTimer c = fxmlLoader.getController();
-            c.setCocheAsociado(cocheRegistrado);
-            c.setPantallaInicioParking(controladorInicio);
-            controladorInicio.addTimer(c);
-            c.setStage(stage);
-        }
+       if(AlertaUtils.showConfirmacionRegistro(txtMatricula.getText())){
+           Coche cocheRegistrado = new Coche(txtMatricula.getText());
+           if (!cocheRegistrado.matriculaValida()) {
+               //Si no es válida se lanza una alerta notificando del modelo que debe seguir
+               AlertaUtils.showAlertaInformacion(
+                       Constantes.ALERTA_MATRICULA_INCORRECTA.getDescripcion(),
+                       Constantes.MENSAJE_MATRICULA_INVALIDA.getDescripcion()
+               );
+           } else {
+               cocheRegistrado.insertarCoche();
+               controladorInicio.addCoche(cocheRegistrado);
+               Stage stage = PantallaUtils.cerrarEstaPantalla(btnEntrar);
+               FXMLLoader fxmlLoader = PantallaUtils.showEstaPantalla(
+                       stage,
+                       Constantes.PAGINA_APARCADO.getDescripcion(),
+                       Constantes.TITULO_APARCADO.getDescripcion(),
+                       1000,
+                       600
+               );
+               //Tras crear la nueva pantalla le asociamos el controlador principal para que pueda notificarle cuando el vehículo abandona el parking
+               ControllerPantallaTresTimer c = fxmlLoader.getController();
+               c.setCocheAsociado(cocheRegistrado);
+               c.setPantallaInicioParking(controladorInicio);
+               controladorInicio.addTimer(c);
+               c.setStage(stage);
+           }
+       }
+
     }
 
     /**

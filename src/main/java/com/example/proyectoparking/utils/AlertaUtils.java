@@ -4,6 +4,8 @@ package com.example.proyectoparking.utils;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
+import static com.example.proyectoparking.utils.Constantes.*;
+
 public class AlertaUtils {
     // Método para mostrar alerta informativa
     public static void showAlertaInformacion(String title, String message) {
@@ -35,8 +37,18 @@ public class AlertaUtils {
 
     public static boolean showConfirmacionExpulsion(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Seguro que quiere expulsar el vehiuculo?");
+        alert.setTitle(ALERTA_CONFIRMACION_EXPULSION_TITULO.getDescripcion());
         alert.setHeaderText(null);
+        alert.setContentText(MENSAJE_CONFIRMACION_EXPULSION.getDescripcion());
+        ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+        return result == ButtonType.OK;
+    }
+
+    public static boolean showConfirmacionRegistro(String matricula){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(ALERTA_CONFIRMACION_REGISTRO_TITULO.getDescripcion());
+        alert.setHeaderText(null);
+        alert.setContentText(MENSAJE_CONFIRMACION_REGISTRO.getDescripcion().replace("{0}",matricula));
         ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
         return result == ButtonType.OK;
     }

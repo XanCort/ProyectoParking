@@ -61,8 +61,8 @@ public class ControllerPantallaInicioParking {
                 stage,
                 Constantes.PAGINA_ADMINISTRADOR.getDescripcion(),
                 Constantes.TITULO_ADMINISTRADOR.getDescripcion(),
-                600,
-                600
+                650,
+                400
         );
         pantallaAdmin = fxmlLoader.getController();
         pantallaAdmin.setControllerInicio(this);
